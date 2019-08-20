@@ -37,7 +37,80 @@ $ npm i --save-dev @types/nedb
 
 ## Quick Start
 
-[Overview & Tutorial](https://docs.nestjs.com)
+1. First in your model file, extends the base `Model`
+```ts
+import { Model } from '@hungtcs-box/nest-nedb';
+
+export class UserModel extends Model {
+  username?: string;
+
+}
+```
+
+2. Import `NedbModule.forFeature` in your `UsersModule`
+```ts
+import { UserModel } from './models/user.model';
+import { NedbModule } from '@hungtcs-box/nest-nedb';
+
+@Module({
+  imports: [
+    PasswdModule,
+    NedbModule.forFeature([
+      {
+        model: UserModel,
+        indexes: {
+          username: {
+            unique: true,
+          },
+        },
+      },
+    ]),
+  ],
+  exports: [
+    UsersService,
+  ],
+  providers: [
+    UsersService,
+  ],
+  controllers: [
+    UsersController,
+  ],
+})
+export class UsersModule {
+
+}
+```
+
+3. Import `NedbModule.forRoot` in your `AppModule`
+```js
+import { NedbModule } from '@hungtcs-box/nest-nedb';
+
+@Module({
+  imports: [
+    NedbModule.forRoot(`path/to/your/database/file`),
+  ],
+  controllers: [
+    AppController,
+  ],
+})
+export class AppModule {
+
+}
+```
+
+4. Now you can inject the nedb DataStore in your `UserService`
+```ts
+@Injectable()
+export class UsersService {
+
+  constructor(
+      @InjectDatastore(UserModel) private readonly dataStore: DataStore<UserModel>) {
+
+  }
+
+}
+```
+
 
 ## Support
 

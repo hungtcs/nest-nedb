@@ -2,7 +2,7 @@
   "name": "@hungtcs-box/nest-nedb",
   "main": "index.js",
   "author": "鸿则 <hungtcs@163.com>",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "repository": "https://github.com/hungtcs/nest-nedb.git",
   "description": "NEDB module for Nest framework (node.js)",
