@@ -1,0 +1,28 @@
+{
+  "name": "@hungtcs-box/nest-nedb",
+  "main": "index.js",
+  "author": "鸿则 <hungtcs@163.com>",
+  "version": "0.0.2",
+  "license": "MIT",
+  "repository": "https://github.com/hungtcs/nest-nedb.git",
+  "description": "NEDB module for Nest framework (node.js)",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "nest", "nestjs", "nedb", "json", "db"
+  ],
+  "dependencies": {
+    "@nestjs/common": "^6.5.3",
+    "@nestjs/core": "^6.5.3",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/nedb": "^1.8.8",
+    "@types/node": "^12.7.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^6.5.3",
+    "@nestjs/core": "^6.5.3"
+  }
+}
