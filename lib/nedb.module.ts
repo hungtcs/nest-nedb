@@ -1,5 +1,5 @@
 import Datastore from 'nedb';
-import { resolve } from 'path';
+import { join } from 'path';
 import { promisify } from 'util';
 import { NedbOptions } from './nedb-options';
 import { NedbCoreModule } from './nedb-core.module';
@@ -39,7 +39,7 @@ export class NedbModule {
         provide: `NEDB_DATABASE_${ option.model.name }`,
         useFactory: async (databasePath: string) => {
           try {
-            const datastore = new Datastore({ filename: `${ resolve(databasePath, option.filename ? option.filename : `${ option.model.name }.nedb`) }` });
+            const datastore = new Datastore({ filename: `${ join(databasePath, option.filename ? option.filename : `${ option.model.name }.nedb`) }` });
             await promisify(datastore.loadDatabase.bind(datastore))();
             await Promise.all(Object.keys(option.indexes).map(async (key) => {
               return await promisify(datastore.ensureIndex.bind(datastore))({
