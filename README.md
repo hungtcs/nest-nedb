@@ -100,6 +100,9 @@ export class AppModule {
 
 4. Now you can inject the nedb DataStore in your `UserService`
 ```ts
+import { InjectDatastore } from '@hungtcs-box/nest-nedb';
+import DataStore from 'nedb';
+
 @Injectable()
 export class UsersService {
 
